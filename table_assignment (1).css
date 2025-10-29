@@ -1,0 +1,118 @@
+/* Base */
+:root {
+  --bg: #f9f9f9;
+  --fg: #333;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --thead: #1a3e4c;
+  --thead-fg: #ffffff;
+  --row-even: #f3f6f8;
+  --caption: #0f172a;
+  --shadow: 0 8px 18px rgba(0,0,0,.06);
+  --radius: 14px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  color: var(--caption);
+}
+
+/* Table core */
+table.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;           /* keeps rounded corners for header */
+  box-shadow: var(--shadow);
+}
+
+table.schedule caption {
+  caption-side: top;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--caption);
+  background: linear-gradient(to right, #67afcb, #1a3e4c 25%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+table.schedule thead th {
+  background: var(--thead);
+  color: var(--thead-fg);
+  text-align: left;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+table.schedule th,
+table.schedule td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1rem;
+  vertical-align: top;
+}
+
+table.schedule tbody tr:nth-child(even) {
+  background: var(--row-even);      /* even-row zebra striping */
+}
+
+table.schedule tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Mobile-first readability */
+table.schedule {
+  font-size: 0.95rem;
+}
+
+/* Tablet viewport styles — aligns with “HTML 417” task */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .container { max-width: 900px; }
+  table.schedule {
+    font-size: 1rem;
+  }
+  table.schedule th,
+  table.schedule td {
+    padding: 1rem 1.1rem;
+  }
+}
+
+/* Large desktop viewport styles — aligns with “HTML 422” task */
+@media (min-width: 1200px) {
+  .container { max-width: 1200px; }
+  table.schedule {
+    font-size: 1.05rem;
+  }
+  table.schedule th,
+  table.schedule td {
+    padding: 1.1rem 1.25rem;
+  }
+  table.schedule thead th {
+    letter-spacing: 0.3px;
+  }
+}
